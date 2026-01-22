@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<application
+			type="server-application"
+			xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			xsi:noNamespaceSchemaLocation="http://www.m-files.com/schemas/appdef-server-v3.xsd">
+  <guid>38295ee1-c4ea-4e4f-8fda-e0e464607208</guid>
+  <name>VPPropertyValidator</name>
+  <description>Virtuoso Partners Common Property Validation</description>
+  <publisher>Virtuoso Partners</publisher>
+  <version>0.2</version>
+  <copyright>Virtuoso Partners</copyright>
+  <required-mfiles-version>22.3.0.0</required-mfiles-version>
+  <multi-server-compatible>false</multi-server-compatible>
+  <extension-objects>
+    <extension-object>
+      <name>VPPropertyValidator</name>
+      <assembly>VPPropertyValidator.dll</assembly>
+      <class>VPPropertyValidator.VaultApplication</class>
+      <installation-method>Install</installation-method>
+      <uninstallation-method>Uninstall</uninstallation-method>
+      <initialization-method>Initialize</initialization-method>
+      <uninitialization-method>Uninitialize</uninitialization-method>
+      <start-operations-method>StartOperations</start-operations-method>
+    </extension-object>
+  </extension-objects>
+</application>
