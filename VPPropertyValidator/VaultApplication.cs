@@ -2,7 +2,7 @@ using MFiles.VAF;
 using MFiles.VAF.AppTasks;
 using MFiles.VAF.Common;
 using MFiles.VAF.Configuration;
-using MFiles.VAF.Core;
+//using MFiles.VAF.Core;
 using MFilesAPI;
 using System;
 using System.Collections.Generic;
@@ -11,11 +11,15 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using VPPropertyValidator;
+using MFiles.VAF.Configuration.Logging;
+
+using MFiles.VAF.Extensions;
+
 
 namespace VPPropertyValidator
 {
 
-    public class VaultApplication : ConfigurableVaultApplicationBase<Configuration>
+    public class VPPropertyBuilder : ConfigurableVaultApplicationBase<Configuration>
     {
         [EventHandler(MFEventHandlerType.MFEventHandlerBeforeCheckInChangesFinalize)]
         public void ValidateProperties(EventHandlerEnvironment env)
@@ -110,7 +114,10 @@ namespace VPPropertyValidator
             catch (ArgumentException ex)
             {
                 // Log invalid regex configuration to Windows Event Log so Admins know to fix it.
-                SysUtils.ReportErrorMessageToEventLog($"Invalid Regex pattern: {pattern}", ex);
+                this.Logger.Error(
+                ex,
+                $"Invalid Regex pattern configured: '{pattern}'. Please check the configuration."
+            );
                 return true; // Fail open to avoid blocking users due to config error
             }
         }

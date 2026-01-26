@@ -50,7 +50,8 @@
     <None Include="install-application.ps1" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="MFiles.VAF" Version="22.12.672.3" />
+    <PackageReference Include="MFiles.VAF" Version="25.3.727.1" />
+    <PackageReference Include="MFiles.VAF.Extensions" Version="24.12.75" />
   </ItemGroup>
   <Target Name="RunWhenBuildChanges" AfterTargets="Build">
     <!-- Load the current version from the appdef file. -->

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.Serialization;
 using MFiles.VAF.Configuration.JsonAdaptor;
 using System;
+using MFiles.VAF.Configuration.Logging;
 
 namespace VPPropertyValidator
 {
@@ -14,6 +15,8 @@ namespace VPPropertyValidator
         [DataMember]
         [JsonConfEditor(Label = "Validation Rules", HelpText = "Define regex validations for specific properties.")]
         public List<ValidationRule> ValidationRules { get; set; } = new List<ValidationRule>();
+        /// <summary>Logging for this class</summary>
+        private ILogger Logger { get; } = LogManager.GetLogger(typeof(Configuration));
     }
 
     [DataContract]
